@@ -2,7 +2,10 @@ const todoForm = document.querySelector('form');
 const todoInput = document.getElementById('todo-input');
 const todoListUL = document.getElementById('todo-list');
 
-let allTodos = [];
+let allTodos = getTodos();
+// console.log(allTodos);
+updateTodoList();
+
 
 todoForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -13,16 +16,13 @@ todoForm.addEventListener('submit', function(e){
 function addTodo(){
     const todoText = todoInput.value.trim();
 
-    // if(todoText.lenght > 0){
     if(todoText.length > 0){
 
         allTodos.push(todoText);
-        // createTodoItem(todoText);
         updateTodoList();
+        saveTodos();
         todoInput.value = "";
     }
-    // console.log(allTodos);
-    // alert(todoText);
 }
 
 function updateTodoList (){
@@ -51,15 +51,14 @@ function createTodoItem(todo, todoIndex){
         </svg>
     </button>
     `
-
-
-
-
-
-
-
-
-    // todoLI.innerText = todo;
     return todoLI;
-    // todoListUL.append(todoLI);
+}
+
+function saveTodos(){
+    const todosJson = JSON.stringify(allTodos);
+    localStorage.setItem("todos", "todosJson");
+}
+function getTodos(){
+    const todos = localStorage.getItem("todos")  || "[]";
+    return JSON.parse(todos);
 }
