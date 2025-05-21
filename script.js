@@ -13,7 +13,9 @@ todoForm.addEventListener('submit', function(e){
 function addTodo(){
     const todoText = todoInput.value.trim();
 
-    if(todoText.lenght > 0){
+    // if(todoText.lenght > 0){
+    if(todoText.length > 0){
+
         allTodos.push(todoText);
         // createTodoItem(todoText);
         updateTodoList();
@@ -42,7 +44,6 @@ function createTodoItem(todo, todoIndex){
     </label>
     <label for="${todoID}" class="todo-text">
         ${todo}
-        webdev project with html css and js
     </label>
     <button class="delete-button">
         <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
