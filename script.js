@@ -14,15 +14,24 @@ function addTodo(){
 
     if(todoText.lenght > 0){
         allTodos.push(todoText);
-        createTodoItem(todoText);
-        todoInput.value = " ";
+        // createTodoItem(todoText);
+        updateTodoList();
+        todoInput.value = "";
     }
     // console.log(allTodos);
     // alert(todoText);
 }
 
+function updateTodoList (){
+    todoListUL.innerHTML = "";
+    allTodos.forEach((todo, todoIndex)=>{
+        todoItem = createTodoItem(todo, todoIndex);
+        todoListUL.append(todoItem);
+    })
+}
 function createTodoItem(todo){
     const todoLI = document.createElement("li");
     todoLI.innerText = todo;
-    todoListUL.append(todoLI);
+    return todoLI;
+    // todoListUL.append(todoLI);
 }
