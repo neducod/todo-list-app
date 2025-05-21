@@ -16,8 +16,12 @@ function addTodo(){
     const todoText = todoInput.value.trim();
 
     if(todoText.length > 0){
+        const todoObject = {
+            text: todoText,
+            completed: false
+        }
 
-        allTodos.push(todoText);
+        allTodos.push(todoObject);
         updateTodoList();
         saveTodos();
         todoInput.value = "";
@@ -34,6 +38,7 @@ function updateTodoList (){
 function createTodoItem(todo, todoIndex){
     const todoID = "todo-"+todoIndex;
     const todoLI = document.createElement("li");
+    const todoText = todo.text;
     todoLI.className = "todo";
     todoLI.innerHTML = ` <input type="checkbox" id="${todoID}">
     <label class="custom-checkbox" for="todo-1">
