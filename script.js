@@ -3,7 +3,6 @@ const todoInput = document.getElementById('todo-input');
 const todoListUL = document.getElementById('todo-list');
 
 let allTodos = getTodos();
-// console.log(allTodos);
 updateTodoList();
 
 
@@ -51,7 +50,17 @@ function createTodoItem(todo, todoIndex){
         </svg>
     </button>
     `
+    const deleteButton =  todoLI.querySelector(".delete-button");
+    deleteButton.addEventListener("click", ()=>{
+        deleteTodoItem(todoIndex);
+    })
     return todoLI;
+}
+
+function deleteTodoItem(todoIndex){
+    allTodos = allTodos.filter((_, i)=> i !== todoIndex);
+    saveTodos();
+    updateTodoList();
 }
 
 function saveTodos(){
