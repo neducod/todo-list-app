@@ -76,8 +76,9 @@ function deleteTodoItem(todoIndex){
 
 function saveTodos(){
     const todosJson = JSON.stringify(allTodos);
-    localStorage.setItem("todos", "todosJson");
+    localStorage.setItem("todos", todosJson);
 }
+
 function getTodos(){
     const todos = localStorage.getItem("todos")  || "[]";
     return JSON.parse(todos);
